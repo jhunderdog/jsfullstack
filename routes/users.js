@@ -4,6 +4,8 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 
 
+
+
 router.get('/login', (req, res, next) => {
     res.render('Login');
 });

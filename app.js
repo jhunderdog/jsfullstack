@@ -3,6 +3,7 @@ const expressejsLayouts = require('express-ejs-layouts');
 const app = express();
 const mongoose = require('mongoose');
 
+
 const db = require('./config/keys').mongoURI;
 
 mongoose.connect(db, { useNewUrlParser: true })
@@ -11,10 +12,11 @@ mongoose.connect(db, { useNewUrlParser: true })
     
 app.use(expressejsLayouts);
 app.set('view engine', 'ejs');
+//Express body parser
+app.use(express.urlencoded({ extended:true }));
 
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
-
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
 
